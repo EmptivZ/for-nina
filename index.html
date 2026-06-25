@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu yang Lagi Cemberut... 🥺</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fbc5d8, #fdf2f4);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: #5a4b4f;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(223, 118, 151, 0.25);
+            backdrop-filter: blur(8px);
+            max-width: 420px;
+            width: 90%;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Styling untuk Gambar GIF */
+        .gif-box {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            margin: 0 auto 15px auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            color: #d94b73;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        p.intro {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #6e5d62;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 60px;
+            position: relative;
+        }
+
+        .btn {
+            background-color: #d94b73;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(217, 75, 115, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #f26d93;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #7a6e71;
+            box-shadow: none;
+            position: relative;
+        }
+
+        #pageSurat, #pageAkhir {
+            display: none;
+        }
+
+        .letter {
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #615256;
+            background: rgba(255, 240, 243, 0.7);
+            padding: 15px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border-left: 4px solid #d94b73;
+            animation: fadeIn 0.8s ease forwards;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .letter p {
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .heart-pop {
+            position: absolute;
+            color: #f26d93;
+            pointer-events: none;
+            animation: floatUp 3.5s linear infinite;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            15% { opacity: 0.8; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO MUSIK UTAMA -->
+    <!-- Menggunakan instrumen piano romantis yang lembut -->
+    <audio id="bgMusic" loop>
+        <source src="romantic.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <!-- HALAMAN 1: AJAKAN -->
+        <div id="pageAwal">
+            <!-- GIF Kucing Minta Maaf (Bisa diganti link GIF lain jika mau) -->
+            <img class="gif-box" id="gifUtama" src="https://tenor.com/en-GB/view/sorry-sad-my-bad-bow-gif-16623772.gif" alt="Cute GIF">
+            <h1>Nina cantikku </h1>
+            <p class="intro">Aku tau kamu masih marah sayang. baca surat singkat ini untuk kamu, mau ya sayang</p>
+            <div class="btn-group">
+                <button class="btn" onclick="pindahKeSurat()">iya sayang 🤍</button>
+                <button class="btn btn-secondary" id="btnNggak" onmouseover="kabur()" onclick="kabur()">Enggak! 😜</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN 2: SURAT BUJUKAN -->
+        <div id="pageSurat">
+            <div class="letter">
+                <p><strong>Kangen sayang cantikku...</strong></p>
+                <p>Maaf ya cintaku kalau selalu bikin kamu kesel, sedih, atau ngerasa capek sendirian. Aku minta maaf sayang kita damai ya.</p>
+                <p>Aku menyesal buat kamu sedih. Aku sayang kamu, lebih dari yang bisa aku ungkapkan dengan kata-kata. ❤️</p>
+                <p>jangan marah lagi ya sayang, Aku sayang banget sama kamu. 💕</p>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;">Senyum lagi ya sayang, udah siap senyum lagi belum?</p>
+            <button class="btn" onclick="pindahKeAkhir()">Iya, Udah Senyum! 😊</button>
+        </div>
+
+        <!-- HALAMAN 3: BERHASIL -->
+        <div id="pageAkhir">
+            <h1>gitu atuh sayang</h1>
+            <p class="intro" style="font-size: 1.05rem; color: #d94b73; font-weight: bold; margin-bottom: 0;">
+                Cantiknya siapa ini manis banget kalau senyum! <br><br>
+                Terima kasih cantikkuu ya kita baikan. Selamat melanjutkan hari dan tetap bahagia ya, Sayang! ❤️
+            </p>
+        </div>
+    </div>
+
+    <script {nonce}>
+        const music = document.getElementById('bgMusic');
+
+        function pindahKeSurat() {
+            // Memutar musik (Aturan browser mewajibkan interaksi klik user sebelum musik berbunyi)
+            music.play().catch(error => console.log("Musik gagal auto-play karena aturan browser:", error));
+
+            document.getElementById('pageAwal').style.display = 'none';
+            document.getElementById('pageSurat').style.display = 'block';
+            
+            // Pindahkan GIF ke halaman surat di bagian atas agar tetap terlihat lucu
+            const gif = document.getElementById('gifUtama');
+            // Ubah GIF jadi versi kucing pelukan
+            gif.src = "sedding.gif";
+            document.getElementById('pageSurat').insertBefore(gif, document.getElementById('pageSurat').firstChild);
+
+            setInterval(buatEfekHati, 300);
+        }
+
+        function pindahKeAkhir() {
+            document.getElementById('pageSurat').style.display = 'none';
+            document.getElementById('pageAkhir').style.display = 'block';
+            
+            // Pindahkan GIF ke halaman akhir dan ubah jadi versi kucing senang
+            const gif = document.getElementById('gifUtama');
+            gif.src = "kiss.gif";
+            document.getElementById('pageAkhir').insertBefore(gif, document.getElementById('pageAkhir').firstChild);
+        }
+
+        function kabur() {
+            const btn = document.getElementById('btnNggak');
+            const x = Math.random() * 120 - 60; 
+            const y = Math.random() * 60 - 30;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+            
+            const kataKata = ['Yakin?', 'Kamu tega? 🥺', 'Klik tombol kiri aja', 'Gak bisa diklik 😜'];
+            btn.innerText = kataKata[Math.floor(Math.random() * kataKata.length)];
+        }
+
+        function buatEfekHati() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-pop');
+            
+            const emotikon = ['❤️', '✨', '🌸', '🧸', '☁️',];
+            heart.innerText = emotikon[Math.floor(Math.random() * emotikon.length)];
+            
+            heart.style.left = Math.random() * 100 + "vw";
+            const size = Math.random() * 1.2 + 0.8;
+            heart.style.fontSize = size + "rem";
+            
+            const duration = Math.random() * 2 + 2.5;
+            heart.style.animationDuration = duration + "s";
+            
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+    </script>
+</body>
+</html>
